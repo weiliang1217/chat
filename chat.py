@@ -15,8 +15,8 @@ def convert(info):
 		elif line == 'Tom':
 			person = 'Tom'
 			continue
-
-		new.append(person + ': ' + line)
+		if person:
+			new.append(person + ': ' + line)
 	return new
 	
 def write_file(filename, info):
