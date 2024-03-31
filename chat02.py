@@ -16,7 +16,7 @@ def convert(info):
 	viki_count_sticker = 0
 	viki_count_pic = 0
 	for line in info:
-		s = line.split(' ')
+		s = line.split(' ') # split('')根據''符號來拆分
 		time = s[0]
 		name = s[1]
 		#print(s[0]) s清單中第一內容；s[1]=清單第二內容。
@@ -26,8 +26,8 @@ def convert(info):
 			elif s[2] == '圖片':
 				allen_count_pic +=1
 			else:		
-				for msg in s[2:]: #如果要每一筆相加時，
-					allen_count_word += len(s[2:])
+				for msg in s[2:]: #如果要每一筆相加時，就是需要使用
+					allen_count_word += len(msg)
 		elif name == 'Viki':
 			if s[2] == '貼圖':
 				viki_count_sticker += 1
@@ -35,7 +35,7 @@ def convert(info):
 				viki_count_pic += 1
 			else:
 				for msg in s[2:]:
-					viki_count_word += len(s[2:])
+					viki_count_word += len(msg)
 
 	print(allen_count_word)
 	print(allen_count_sticker)
@@ -56,5 +56,5 @@ def write_file(filename, info):
 def main():
 	info = read_file('LINE-Viki.txt') # 可以想像成read_file中，初期的info=[]，經歷過'input.txt'投入並覆蓋成'新info'
 	info = convert(info) # comvert中的return回存的'new'又在定義成info，此情況可以想像成'覆蓋更新info'
-	write_file('output.txt',info) #
+	write_file('output.txt',info) 
 main()
